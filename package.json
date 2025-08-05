@@ -3,15 +3,19 @@
   "version": "1.0.0",
   "description": "A portfolio website using Eleventy and Tailwind CSS",
   "scripts": {
-    "build:css": "postcss src/css/styles.css -o docs/css/styles.css",
+    "build:css": "postcss src/css/styles.css -o docs/css/styles.css --quiet",
     "build": "npm run build:css && eleventy",
     "start": "npm run build:css -- --watch & eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^2.0.0",
     "autoprefixer": "^10.4.21",
+    "luxon": "^3.7.1",
     "postcss": "^8.5.6",
     "postcss-cli": "^11.0.1",
     "tailwindcss": "^3.4.17"
+  },
+  "dependencies": {
+    "@11ty/eleventy-img": "^6.0.4"
   }
 }

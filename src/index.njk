@@ -1,139 +1,188 @@
 ---
 layout: base.njk
 title: "Inicio"
+description: "Portfolio — Lautaro Salas Ane"
 ---
 
 <!-- HERO -->
-<section
-  id="hero"
-  class="hero-section fade-in"
-  style="background-image: url('/photos/hero.jpg')"
->
-  <div class="hero-overlay">
-    <h1 class="hero-title">Capturando Momentos</h1>
-    <p class="hero-subtitle">Fotografía profesional & Marketing visual</p>
-    <a href="#portfolio" class="btn-primary">Ver Portfolio</a>
+<section id="hero" class="hero-section relative overflow-hidden h-screen">
+  <div
+    id="parallax"
+    class="absolute inset-0 bg-cover bg-center"
+    style="background-image:url('/photos/hero.jpg')"
+  ></div>
+  <div class="hero-overlay fade-in relative z-10 text-center px-6 py-10 max-w-md mx-auto">
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Quiet Steps</h1>
+    <p class="text-lg md:text-2xl text-gray-700 mb-6">
+      Transformemos tu visión en imágenes que cuenten tu historia.
+    </p>
+    <a href="#portfolio" class="btn-primary">View Prints</a>
   </div>
 </section>
 
 <!-- SOBRE MÍ -->
 <section
-  id="sobre-mi"
-  class="container-custom text-center py-16 fade-in"
+  id="sobre"
+  class="container-custom py-16 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2>Sobre mí</h2>
-  <p>
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
-    apasionado por convertir momentos auténticos en historias visuales inolvidables.
+  <h2 class="section-title-center">Sobre mí</h2>
+  <p class="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital, apasionado
+    por convertir momentos auténticos en historias visuales inolvidables.
   </p>
 </section>
 
-<!-- PORTFOLIO (mini-carrusel + indicadores) -->
-<section class="fade-in" data-aos="fade-right">
-  <h2 class="container-custom text-2xl font-bold mb-4">Explora mis Fotos</h2>
-  <div class="mini-carousel-wrapper">
-    <button class="carousel-button prev" id="carousel-prev">‹</button>
-    <div id="mini-carousel" class="mini-carousel scrollbar-hide">
-      {% for photo in collections.photo %}
-        <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
-      {% endfor %}
-    </div>
-    <button class="carousel-button next" id="carousel-next">›</button>
-    <div id="dots"></div>
+<!-- MINI-CARRUSEL -->
+<section
+  id="portfolio"
+  class="container-custom py-16 relative fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Explora mis Fotos</h2>
+
+  <button
+    id="carousel-prev"
+    aria-label="Anterior"
+    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg z-10"
+  >‹</button>
+
+  <div id="mini-carousel" class="mini-carousel">
+    {% for photo in collections.photo %}
+      <img
+        src="{{ photo.url }}"
+        alt="{{ photo.data.title }}"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    {% endfor %}
   </div>
+
+  <button
+    id="carousel-next"
+    aria-label="Siguiente"
+    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg z-10"
+  >›</button>
+
+  <div id="dots" class="flex justify-center space-x-2 mt-4"></div>
 </section>
 
 <!-- GALERÍA COMPLETA -->
 <section
   id="galeria"
-  class="container-custom fade-in"
+  class="container-custom py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-2xl font-bold mb-6">Galería Completa</h2>
-  <div class="thumb-grid">
+  <h2 class="section-title-center">Galería Completa</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
     {% for photo in collections.photo %}
-      <a href="{{ photo.url }}" data-lightbox="galeria">
-        <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
+      <a href="{{ photo.url }}" data-lightbox="gallery">
+        <img
+          src="{{ photo.url }}"
+          alt="{{ photo.data.title }}"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     {% endfor %}
   </div>
 </section>
 
+<!-- CTA: Contenido y Llamadas a la Acción -->
+<section
+  id="cta"
+  class="container-custom py-16 text-center bg-gray-50 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">¿Listo para tu próximo proyecto?</h2>
+  <p class="mb-6 text-gray-700">
+    Transformemos tu visión en imágenes que cuenten tu historia.
+  </p>
+  <a href="#contacto" class="btn-primary">Contáctame Ahora</a>
+</section>
+
+<!-- FUTURAS FUNCIONALIDADES -->
+<section
+  id="futuras"
+  class="container-custom py-16 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Futuras Funcionalidades</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Galería Filtrable</h3>
+      <p class="text-gray-600">Selecciona por categorías al instante.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Descargas HD</h3>
+      <p class="text-gray-600">Paquetes descargables de alta resolución.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Tienda Online</h3>
+      <p class="text-gray-600">Compra impresiones directas desde la web.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Testimonios Slider</h3>
+      <p class="text-gray-600">Opiniones de clientes en carrusel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISEÑO Y ACCESIBILIDAD -->
+<section
+  id="diseno"
+  class="container-custom py-16 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Diseño y Accesibilidad</h2>
+  <ul class="list-disc list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
+    <li>Contraste óptimo y modo oscuro opcional.</li>
+    <li>Etiquetas <code>alt</code> descriptivas en todas las imágenes.</li>
+    <li>Navegación íntegra por teclado.</li>
+    <li>Layouts responsivos para cualquier dispositivo.</li>
+  </ul>
+</section>
+
+<!-- EXPERIENCIA DE USUARIO (UX) -->
+<section
+  id="ux"
+  class="container-custom py-16 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Experiencia de Usuario (UX)</h2>
+  <ul class="list-decimal list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
+    <li>Animaciones suaves guían la atención.</li>
+    <li>Carruseles táctiles y con flechas.</li>
+    <li>Sección activa en la navbar al hacer scroll.</li>
+    <li>Back-to-top con scroll suave.</li>
+  </ul>
+</section>
+
+<!-- RENDIMIENTO Y CARGA -->
+<section
+  id="rendimiento"
+  class="container-custom py-16 fade-in bg-gray-50"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Rendimiento y Carga</h2>
+  <ul class="list-disc list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
+    <li><code>loading="lazy"</code> en todas las imágenes.</li>
+    <li>WebP/AVIF generados automáticamente.</li>
+    <li>CSS y JS minificados y cacheados.</li>
+    <li>Tailwind Purge para reducir el tamaño final.</li>
+  </ul>
+</section>
+
 <!-- CONTACTO -->
 <section
   id="contacto"
-  class="container-custom text-center py-16 fade-in"
+  class="container-custom py-16 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2>Contacto</h2>
-  <p class="mb-6">
-    ¿Tienes un proyecto en mente? Escríbeme:
-  </p>
+  <h2 class="section-title-center">Contacto</h2>
+  <p class="mb-6">¿Tienes un proyecto en mente? Escríbeme:</p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
 </section>
 
-<!-- Back to Top -->
-<button id="toTop" aria-label="Volver arriba">↑</button>
-
-<script>
-  // PARALLAX SUAVE solo en desktop/tablet
-  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    const hero = document.getElementById("hero");
-    let scrollY = 0, currentY = 0;
-    window.addEventListener("scroll", () => scrollY = window.pageYOffset);
-    function smoothParallax() {
-      currentY += (scrollY - currentY) * 0.1;
-      hero.style.backgroundPositionY = `${currentY * 0.5}px`;
-      requestAnimationFrame(smoothParallax);
-    }
-    smoothParallax();
-  }
-
-  // Carrusel con navegación, auto-play e indicadores
-  const carousel = document.getElementById("mini-carousel");
-  const dotsContainer = document.getElementById("dots");
-  const items = carousel.children.length;
-  let current = 0;
-  for (let i = 0; i < items; i++) {
-    const dot = document.createElement("span");
-    dotsContainer.append(dot);
-  }
-  const dots = Array.from(dotsContainer.children);
-  function goTo(idx) {
-    current = (idx + items) % items;
-    const target = carousel.children[current];
-    carousel.scrollTo({
-      left: target.offsetLeft - (carousel.offsetWidth - target.offsetWidth)/2,
-      behavior: "smooth"
-    });
-    dots.forEach((d,i) => d.classList.toggle("active", i===current));
-  }
-  document.getElementById("carousel-prev").onclick = () => goTo(current - 1);
-  document.getElementById("carousel-next").onclick = () => goTo(current + 1);
-  setInterval(() => goTo(current + 1), 5000);
-  goTo(0);
-
-  // Sección activa en navbar
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("nav a.nav-link");
-  window.addEventListener("scroll", () => {
-    const y = window.pageYOffset;
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 100;
-      const bottom = top + sec.offsetHeight;
-      const link = document.querySelector(`nav a[href="#${sec.id}"]`);
-      if (y >= top && y < bottom) {
-        navLinks.forEach(a => a.classList.remove("active"));
-        if (link) link.classList.add("active");
-      }
-    });
-  });
-
-  // Back to Top suave
-  const toTop = document.getElementById("toTop");
-  window.addEventListener("scroll", () => {
-    toTop.classList.toggle("show", window.pageYOffset > 400);
-  });
-  toTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-</script>
+<!-- BACK TO TOP -->
+<button id="toTop" aria-label="Volver arriba" class="to-top">↑</button>

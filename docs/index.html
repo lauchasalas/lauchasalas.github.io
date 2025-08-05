@@ -1,291 +1,517 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Inicio</title>
-  <!-- Fuente Inter -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
-    rel="stylesheet"
-  />
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link
-    href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
-    rel="stylesheet"
-  />
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  <meta name="description" content="Portfolio — Lautaro Salas Ane">
+
+  <!-- Tailwind CSS compilado -->
+  <link rel="stylesheet" href="/css/styles.css">
+
+  <!-- Google Fonts: Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Lightbox & AOS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js" defer></script>
 </head>
 
-  <body class="pt-16 bg-gray-50 text-gray-900 font-sans">
-    <!-- HEADER -->
-    <header>
-      <nav class="container-custom flex items-center justify-between h-16">
-        <a href="/" class="text-xl font-bold">Lautaro Salas Ane</a>
-        <ul class="hidden md:flex space-x-6">
-          <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
-          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="#galeria" class="nav-link">Galería</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
-        </ul>
-        <button id="mobile-menu-button" class="md:hidden p-2">
-          <span class="block w-5 h-0.5 bg-white mb-1"></span>
-          <span class="block w-5 h-0.5 bg-white mb-1"></span>
-          <span class="block w-5 h-0.5 bg-white"></span>
-        </button>
-      </nav>
-      <ul id="mobile-menu" class="hidden bg-gray-800 text-white">
-        <li><a href="#sobre-mi" class="block px-4 py-2">Sobre mí</a></li>
-        <li><a href="#portfolio" class="block px-4 py-2">Portfolio</a></li>
-        <li><a href="#galeria" class="block px-4 py-2">Galería</a></li>
-        <li><a href="#contacto" class="block px-4 py-2">Contacto</a></li>
-      </ul>
-    </header>
+  <body class="bg-white text-gray-900">
+
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-sm">
+  <div class="max-w-5xl mx-auto flex items-center justify-between px-6 py-4">
+    <a href="/" class="font-extrabold text-lg">Lautaro Salas Ane</a>
+    <nav class="flex space-x-6 text-gray-800">
+      <a href="#sobre">Sobre mí</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </div>
+</header>
+
 
     <main>
+      
 <!-- HERO -->
-<section
-  id="hero"
-  class="hero-section fade-in"
-  style="background-image: url('/photos/hero.jpg')"
->
-  <div class="hero-overlay">
-    <h1 class="hero-title">Capturando Momentos</h1>
-    <p class="hero-subtitle">Fotografía profesional & Marketing visual</p>
-    <a href="#portfolio" class="btn-primary">Ver Portfolio</a>
+<section id="hero" class="hero-section relative overflow-hidden h-screen">
+  <div
+    id="parallax"
+    class="absolute inset-0 bg-cover bg-center"
+    style="background-image:url('/photos/hero.jpg')"
+  ></div>
+  <div class="hero-overlay fade-in relative z-10 text-center px-6 py-10 max-w-md mx-auto">
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Quiet Steps</h1>
+    <p class="text-lg md:text-2xl text-gray-700 mb-6">
+      Transformemos tu visión en imágenes que cuenten tu historia.
+    </p>
+    <a href="#portfolio" class="btn-primary">View Prints</a>
   </div>
 </section>
 
 <!-- SOBRE MÍ -->
 <section
-  id="sobre-mi"
-  class="container-custom text-center py-16 fade-in"
+  id="sobre"
+  class="container-custom py-16 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2>Sobre mí</h2>
-  <p>
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
-    apasionado por convertir momentos auténticos en historias visuales inolvidables.
+  <h2 class="section-title-center">Sobre mí</h2>
+  <p class="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital, apasionado
+    por convertir momentos auténticos en historias visuales inolvidables.
   </p>
 </section>
 
-<!-- PORTFOLIO (mini-carrusel + indicadores) -->
-<section class="fade-in" data-aos="fade-right">
-  <h2 class="container-custom text-2xl font-bold mb-4">Explora mis Fotos</h2>
-  <div class="mini-carousel-wrapper">
-    <button class="carousel-button prev" id="carousel-prev">‹</button>
-    <div id="mini-carousel" class="mini-carousel scrollbar-hide">
-      
-        <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
-      
-        <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
-      
-        <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
-      
-        <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
-      
-        <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
-      
-        <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
-      
-        <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
-      
-        <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
-      
-        <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
-      
-        <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
-      
-        <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
-      
-        <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
-      
-    </div>
-    <button class="carousel-button next" id="carousel-next">›</button>
-    <div id="dots"></div>
+<!-- MINI-CARRUSEL -->
+<section
+  id="portfolio"
+  class="container-custom py-16 relative fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Explora mis Fotos</h2>
+
+  <button
+    id="carousel-prev"
+    aria-label="Anterior"
+    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg z-10"
+  >‹</button>
+
+  <div id="mini-carousel" class="mini-carousel">
+    
+      <img
+        src="/photos/hero.jpg"
+        alt="hero"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo1.jpg"
+        alt="photo1"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo10.jpg"
+        alt="photo10"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo11.jpg"
+        alt="photo11"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo2.jpg"
+        alt="photo2"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo3.jpg"
+        alt="photo3"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo4.jpg"
+        alt="photo4"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo5.jpg"
+        alt="photo5"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo6.jpg"
+        alt="photo6"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo7.jpg"
+        alt="photo7"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo8.jpg"
+        alt="photo8"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
+      <img
+        src="/photos/photo9.jpg"
+        alt="photo9"
+        loading="lazy"
+        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+      />
+    
   </div>
+
+  <button
+    id="carousel-next"
+    aria-label="Siguiente"
+    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg z-10"
+  >›</button>
+
+  <div id="dots" class="flex justify-center space-x-2 mt-4"></div>
 </section>
 
 <!-- GALERÍA COMPLETA -->
 <section
   id="galeria"
-  class="container-custom fade-in"
+  class="container-custom py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-2xl font-bold mb-6">Galería Completa</h2>
-  <div class="thumb-grid">
+  <h2 class="section-title-center">Galería Completa</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
     
-      <a href="/photos/hero.jpg" data-lightbox="galeria">
-        <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+      <a href="/photos/hero.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/hero.jpg"
+          alt="hero"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo1.jpg" data-lightbox="galeria">
-        <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+      <a href="/photos/photo1.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo1.jpg"
+          alt="photo1"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo10.jpg" data-lightbox="galeria">
-        <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+      <a href="/photos/photo10.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo10.jpg"
+          alt="photo10"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo11.jpg" data-lightbox="galeria">
-        <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+      <a href="/photos/photo11.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo11.jpg"
+          alt="photo11"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo2.jpg" data-lightbox="galeria">
-        <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+      <a href="/photos/photo2.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo2.jpg"
+          alt="photo2"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo3.jpg" data-lightbox="galeria">
-        <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+      <a href="/photos/photo3.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo3.jpg"
+          alt="photo3"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo4.jpg" data-lightbox="galeria">
-        <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+      <a href="/photos/photo4.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo4.jpg"
+          alt="photo4"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo5.jpg" data-lightbox="galeria">
-        <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+      <a href="/photos/photo5.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo5.jpg"
+          alt="photo5"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo6.jpg" data-lightbox="galeria">
-        <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+      <a href="/photos/photo6.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo6.jpg"
+          alt="photo6"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo7.jpg" data-lightbox="galeria">
-        <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+      <a href="/photos/photo7.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo7.jpg"
+          alt="photo7"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo8.jpg" data-lightbox="galeria">
-        <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+      <a href="/photos/photo8.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo8.jpg"
+          alt="photo8"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
-      <a href="/photos/photo9.jpg" data-lightbox="galeria">
-        <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+      <a href="/photos/photo9.jpg" data-lightbox="gallery">
+        <img
+          src="/photos/photo9.jpg"
+          alt="photo9"
+          loading="lazy"
+          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
+        />
       </a>
     
   </div>
+</section>
+
+<!-- CTA: Contenido y Llamadas a la Acción -->
+<section
+  id="cta"
+  class="container-custom py-16 text-center bg-gray-50 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">¿Listo para tu próximo proyecto?</h2>
+  <p class="mb-6 text-gray-700">
+    Transformemos tu visión en imágenes que cuenten tu historia.
+  </p>
+  <a href="#contacto" class="btn-primary">Contáctame Ahora</a>
+</section>
+
+<!-- FUTURAS FUNCIONALIDADES -->
+<section
+  id="futuras"
+  class="container-custom py-16 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Futuras Funcionalidades</h2>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Galería Filtrable</h3>
+      <p class="text-gray-600">Selecciona por categorías al instante.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Descargas HD</h3>
+      <p class="text-gray-600">Paquetes descargables de alta resolución.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Tienda Online</h3>
+      <p class="text-gray-600">Compra impresiones directas desde la web.</p>
+    </div>
+    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+      <h3 class="font-semibold mb-2">Testimonios Slider</h3>
+      <p class="text-gray-600">Opiniones de clientes en carrusel.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DISEÑO Y ACCESIBILIDAD -->
+<section
+  id="diseno"
+  class="container-custom py-16 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Diseño y Accesibilidad</h2>
+  <ul class="list-disc list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
+    <li>Contraste óptimo y modo oscuro opcional.</li>
+    <li>Etiquetas <code>alt</code> descriptivas en todas las imágenes.</li>
+    <li>Navegación íntegra por teclado.</li>
+    <li>Layouts responsivos para cualquier dispositivo.</li>
+  </ul>
+</section>
+
+<!-- EXPERIENCIA DE USUARIO (UX) -->
+<section
+  id="ux"
+  class="container-custom py-16 fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Experiencia de Usuario (UX)</h2>
+  <ul class="list-decimal list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
+    <li>Animaciones suaves guían la atención.</li>
+    <li>Carruseles táctiles y con flechas.</li>
+    <li>Sección activa en la navbar al hacer scroll.</li>
+    <li>Back-to-top con scroll suave.</li>
+  </ul>
+</section>
+
+<!-- RENDIMIENTO Y CARGA -->
+<section
+  id="rendimiento"
+  class="container-custom py-16 fade-in bg-gray-50"
+  data-aos="fade-up"
+>
+  <h2 class="section-title-center">Rendimiento y Carga</h2>
+  <ul class="list-disc list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
+    <li><code>loading="lazy"</code> en todas las imágenes.</li>
+    <li>WebP/AVIF generados automáticamente.</li>
+    <li>CSS y JS minificados y cacheados.</li>
+    <li>Tailwind Purge para reducir el tamaño final.</li>
+  </ul>
 </section>
 
 <!-- CONTACTO -->
 <section
   id="contacto"
-  class="container-custom text-center py-16 fade-in"
+  class="container-custom py-16 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2>Contacto</h2>
-  <p class="mb-6">
-    ¿Tienes un proyecto en mente? Escríbeme:
-  </p>
+  <h2 class="section-title-center">Contacto</h2>
+  <p class="mb-6">¿Tienes un proyecto en mente? Escríbeme:</p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
 </section>
 
-<!-- Back to Top -->
-<button id="toTop" aria-label="Volver arriba">↑</button>
+<!-- BACK TO TOP -->
+<button id="toTop" aria-label="Volver arriba" class="to-top">↑</button>
 
-<script>
-  // PARALLAX SUAVE solo en desktop/tablet
-  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-    const hero = document.getElementById("hero");
-    let scrollY = 0, currentY = 0;
-    window.addEventListener("scroll", () => scrollY = window.pageYOffset);
-    function smoothParallax() {
-      currentY += (scrollY - currentY) * 0.1;
-      hero.style.backgroundPositionY = `${currentY * 0.5}px`;
-      requestAnimationFrame(smoothParallax);
-    }
-    smoothParallax();
-  }
+    </main>
 
-  // Carrusel con navegación, auto-play e indicadores
-  const carousel = document.getElementById("mini-carousel");
-  const dotsContainer = document.getElementById("dots");
-  const items = carousel.children.length;
-  let current = 0;
-  for (let i = 0; i < items; i++) {
-    const dot = document.createElement("span");
-    dotsContainer.append(dot);
-  }
-  const dots = Array.from(dotsContainer.children);
-  function goTo(idx) {
-    current = (idx + items) % items;
-    const target = carousel.children[current];
-    carousel.scrollTo({
-      left: target.offsetLeft - (carousel.offsetWidth - target.offsetWidth)/2,
-      behavior: "smooth"
-    });
-    dots.forEach((d,i) => d.classList.toggle("active", i===current));
-  }
-  document.getElementById("carousel-prev").onclick = () => goTo(current - 1);
-  document.getElementById("carousel-next").onclick = () => goTo(current + 1);
-  setInterval(() => goTo(current + 1), 5000);
-  goTo(0);
-
-  // Sección activa en navbar
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("nav a.nav-link");
-  window.addEventListener("scroll", () => {
-    const y = window.pageYOffset;
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 100;
-      const bottom = top + sec.offsetHeight;
-      const link = document.querySelector(`nav a[href="#${sec.id}"]`);
-      if (y >= top && y < bottom) {
-        navLinks.forEach(a => a.classList.remove("active"));
-        if (link) link.classList.add("active");
-      }
-    });
-  });
-
-  // Back to Top suave
-  const toTop = document.getElementById("toTop");
-  window.addEventListener("scroll", () => {
-    toTop.classList.toggle("show", window.pageYOffset > 400);
-  });
-  toTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
-</script>
-</main>
-
-    <footer class="bg-gray-900 text-white py-8 mt-16">
-  <div class="container-custom text-center">
-    <p class="text-sm">&copy; 2025 Lautaro Salas Ane. Todos los derechos reservados.</p>
-  </div>
+    <footer class="py-6 text-center text-gray-600 bg-gray-50">
+  © 05 August 2025 Lautaro Salas Ane. Todos los derechos reservados.
 </footer>
 
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true });
+    </script>
 
-      // Menú móvil
-      document.getElementById("mobile-menu-button").onclick = () => {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
-      };
+    <!-- Interacciones -->
+    <script>
+    // Parallax Hero
+    const hero = document.getElementById("hero");
+    window.addEventListener("scroll", () => {
+      if (hero) hero.style.backgroundPositionY = `${window.pageYOffset * 0.3}px`;
+    });
 
-      // Resaltar sección activa
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll("nav a.nav-link");
+    // Mini-Carrusel con flechas, auto y drag
+    (function(){
+      const mini    = document.getElementById("mini-carousel");
+      const prevBtn = document.getElementById("carousel-prev");
+      const nextBtn = document.getElementById("carousel-next");
+      const dots    = document.getElementById("dots");
+      if (!mini || !prevBtn || !nextBtn || !dots) return;
+
+      const count = mini.children.length;
+      let current = 0, isDown = false, startX, scrollLeft;
+
+      // Crear dots
+      for (let i = 0; i < count; i++){
+        const d = document.createElement("span");
+        d.className = "dot";
+        dots.append(d);
+      }
+      const allDots = dots.children;
+      function updateDots(){
+        Array.from(allDots).forEach((d,i) =>
+          d.classList.toggle("active", i === current)
+        );
+      }
+
+      // Flechas
+      prevBtn.addEventListener("click", () => {
+        current = (current - 1 + count) % count;
+        mini.scrollBy({ left: -mini.offsetWidth * 0.4, behavior: "smooth" });
+        updateDots();
+      });
+      nextBtn.addEventListener("click", () => {
+        current = (current + 1) % count;
+        mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
+        updateDots();
+      });
+
+      // Auto-scroll
+      setInterval(() => nextBtn.click(), 4000);
+
+      // Drag mouse
+      mini.addEventListener("mousedown", e => {
+        isDown = true;
+        startX = e.pageX - mini.offsetLeft;
+        scrollLeft = mini.scrollLeft;
+      });
+      mini.addEventListener("mouseup", () => isDown = false);
+      mini.addEventListener("mouseleave", () => isDown = false);
+      mini.addEventListener("mousemove", e => {
+        if (!isDown) return;
+        const x = e.pageX - mini.offsetLeft;
+        mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
+      });
+
+      // Drag touch
+      mini.addEventListener("touchstart", e => {
+        isDown = true;
+        startX = e.touches[0].pageX - mini.offsetLeft;
+        scrollLeft = mini.scrollLeft;
+      });
+      mini.addEventListener("touchend", () => isDown = false);
+      mini.addEventListener("touchmove", e => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - mini.offsetLeft;
+        mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
+      });
+
+      updateDots();
+    })();
+
+    // Navbar sección activa
+    (function(){
+      const secs = document.querySelectorAll("section[id]");
+      const links = document.querySelectorAll("nav a");
       window.addEventListener("scroll", () => {
-        const scrollY = window.pageYOffset;
-        sections.forEach(sec => {
-          const top = sec.offsetTop - 100;
-          const bottom = top + sec.offsetHeight;
+        const y = window.pageYOffset;
+        secs.forEach(sec => {
+          const top = sec.offsetTop - 100, h = sec.offsetHeight;
           const link = document.querySelector(`nav a[href="#${sec.id}"]`);
-          if (scrollY >= top && scrollY < bottom) {
-            navLinks.forEach(a => a.classList.remove("active"));
-            if (link) link.classList.add("active");
+          if (y >= top && y < top + h) {
+            links.forEach(a => a.classList.remove("text-black","font-extrabold"));
+            link && link.classList.add("text-black","font-extrabold");
           }
         });
       });
+    })();
 
-      // Back to Top
+    // Back-to-Top
+    (function(){
       const toTop = document.getElementById("toTop");
+      if (!toTop) return;
       window.addEventListener("scroll", () => {
         toTop.classList.toggle("show", window.pageYOffset > 400);
       });
-      toTop.onclick = () =>
+      toTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    })();
     </script>
   </body>
 </html>

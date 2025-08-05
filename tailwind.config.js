@@ -1,15 +1,16 @@
+// tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: 'media',
+  darkMode: 'class',
   content: [
     "./src/**/*.{njk,html,js}"
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'ui-sans-serif', 'system-ui']
+        sans: ['Inter','ui-sans-serif','system-ui']
       }
-    }
+    },
   },
   plugins: [],
 };

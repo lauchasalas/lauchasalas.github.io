@@ -1,69 +1,127 @@
 <!DOCTYPE html>
 <html lang="es">
   {% include "head.njk" %}
-  <body class="pt-16 bg-gray-50 text-gray-900 font-sans">
-    <!-- HEADER -->
-    <header>
-      <nav class="container-custom flex items-center justify-between h-16">
-        <a href="/" class="text-xl font-bold">Lautaro Salas Ane</a>
-        <ul class="hidden md:flex space-x-6">
-          <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
-          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
-          <li><a href="#galeria" class="nav-link">Galería</a></li>
-          <li><a href="#contacto" class="nav-link">Contacto</a></li>
-        </ul>
-        <button id="mobile-menu-button" class="md:hidden p-2">
-          <span class="block w-5 h-0.5 bg-white mb-1"></span>
-          <span class="block w-5 h-0.5 bg-white mb-1"></span>
-          <span class="block w-5 h-0.5 bg-white"></span>
-        </button>
-      </nav>
-      <ul id="mobile-menu" class="hidden bg-gray-800 text-white">
-        <li><a href="#sobre-mi" class="block px-4 py-2">Sobre mí</a></li>
-        <li><a href="#portfolio" class="block px-4 py-2">Portfolio</a></li>
-        <li><a href="#galeria" class="block px-4 py-2">Galería</a></li>
-        <li><a href="#contacto" class="block px-4 py-2">Contacto</a></li>
-      </ul>
-    </header>
+  <body class="bg-white text-gray-900">
 
-    <main>{{ content | safe }}</main>
+    {% include "header.njk" %}
+
+    <main>
+      {{ content | safe }}
+    </main>
 
     {% include "footer.njk" %}
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true });
+    </script>
 
-      // Menú móvil
-      document.getElementById("mobile-menu-button").onclick = () => {
-        document.getElementById("mobile-menu").classList.toggle("hidden");
-      };
+    <!-- Interacciones -->
+    <script>
+    // Parallax Hero
+    const hero = document.getElementById("hero");
+    window.addEventListener("scroll", () => {
+      if (hero) hero.style.backgroundPositionY = `${window.pageYOffset * 0.3}px`;
+    });
 
-      // Resaltar sección activa
-      const sections = document.querySelectorAll("section[id]");
-      const navLinks = document.querySelectorAll("nav a.nav-link");
+    // Mini-Carrusel con flechas, auto y drag
+    (function(){
+      const mini    = document.getElementById("mini-carousel");
+      const prevBtn = document.getElementById("carousel-prev");
+      const nextBtn = document.getElementById("carousel-next");
+      const dots    = document.getElementById("dots");
+      if (!mini || !prevBtn || !nextBtn || !dots) return;
+
+      const count = mini.children.length;
+      let current = 0, isDown = false, startX, scrollLeft;
+
+      // Crear dots
+      for (let i = 0; i < count; i++){
+        const d = document.createElement("span");
+        d.className = "dot";
+        dots.append(d);
+      }
+      const allDots = dots.children;
+      function updateDots(){
+        Array.from(allDots).forEach((d,i) =>
+          d.classList.toggle("active", i === current)
+        );
+      }
+
+      // Flechas
+      prevBtn.addEventListener("click", () => {
+        current = (current - 1 + count) % count;
+        mini.scrollBy({ left: -mini.offsetWidth * 0.4, behavior: "smooth" });
+        updateDots();
+      });
+      nextBtn.addEventListener("click", () => {
+        current = (current + 1) % count;
+        mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
+        updateDots();
+      });
+
+      // Auto-scroll
+      setInterval(() => nextBtn.click(), 4000);
+
+      // Drag mouse
+      mini.addEventListener("mousedown", e => {
+        isDown = true;
+        startX = e.pageX - mini.offsetLeft;
+        scrollLeft = mini.scrollLeft;
+      });
+      mini.addEventListener("mouseup", () => isDown = false);
+      mini.addEventListener("mouseleave", () => isDown = false);
+      mini.addEventListener("mousemove", e => {
+        if (!isDown) return;
+        const x = e.pageX - mini.offsetLeft;
+        mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
+      });
+
+      // Drag touch
+      mini.addEventListener("touchstart", e => {
+        isDown = true;
+        startX = e.touches[0].pageX - mini.offsetLeft;
+        scrollLeft = mini.scrollLeft;
+      });
+      mini.addEventListener("touchend", () => isDown = false);
+      mini.addEventListener("touchmove", e => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - mini.offsetLeft;
+        mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
+      });
+
+      updateDots();
+    })();
+
+    // Navbar sección activa
+    (function(){
+      const secs = document.querySelectorAll("section[id]");
+      const links = document.querySelectorAll("nav a");
       window.addEventListener("scroll", () => {
-        const scrollY = window.pageYOffset;
-        sections.forEach(sec => {
-          const top = sec.offsetTop - 100;
-          const bottom = top + sec.offsetHeight;
+        const y = window.pageYOffset;
+        secs.forEach(sec => {
+          const top = sec.offsetTop - 100, h = sec.offsetHeight;
           const link = document.querySelector(`nav a[href="#${sec.id}"]`);
-          if (scrollY >= top && scrollY < bottom) {
-            navLinks.forEach(a => a.classList.remove("active"));
-            if (link) link.classList.add("active");
+          if (y >= top && y < top + h) {
+            links.forEach(a => a.classList.remove("text-black","font-extrabold"));
+            link && link.classList.add("text-black","font-extrabold");
           }
         });
       });
+    })();
 
-      // Back to Top
+    // Back-to-Top
+    (function(){
       const toTop = document.getElementById("toTop");
+      if (!toTop) return;
       window.addEventListener("scroll", () => {
         toTop.classList.toggle("show", window.pageYOffset > 400);
       });
-      toTop.onclick = () =>
+      toTop.addEventListener("click", () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    })();
     </script>
   </body>
 </html>
