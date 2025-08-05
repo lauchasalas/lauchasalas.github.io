@@ -59,18 +59,19 @@
 <!-- SOBRE MÍ -->
 <section
   id="sobre-mi"
-  class="container-custom text-center py-12 sm:py-16 fade-in"
+  class="container-custom text-center py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-2xl sm:text-3xl font-bold mb-4">Sobre mí</h2>
-  <p class="mx-auto max-w-lg sm:max-w-xl text-base sm:text-lg leading-relaxed">
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital, apasionado por convertir momentos auténticos en historias visuales inolvidables.
+  <h2>Sobre mí</h2>
+  <p>
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
+    apasionado por convertir momentos auténticos en historias visuales inolvidables.
   </p>
 </section>
 
 <!-- PORTFOLIO (mini-carrusel + indicadores) -->
 <section class="fade-in" data-aos="fade-right">
-  <h2 class="container-custom text-xl sm:text-2xl font-bold mb-4">Explora mis Fotos</h2>
+  <h2 class="container-custom text-2xl font-bold mb-4">Explora mis Fotos</h2>
   <div class="mini-carousel-wrapper">
     <button class="carousel-button prev" id="carousel-prev">‹</button>
     <div id="mini-carousel" class="mini-carousel scrollbar-hide">
@@ -111,7 +112,7 @@
   class="container-custom fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-xl sm:text-2xl font-bold mb-6">Galería Completa</h2>
+  <h2 class="text-2xl font-bold mb-6">Galería Completa</h2>
   <div class="thumb-grid">
     
       <a href="/photos/hero.jpg" data-lightbox="galeria">
@@ -168,11 +169,11 @@
 <!-- CONTACTO -->
 <section
   id="contacto"
-  class="container-custom text-center py-12 sm:py-16 fade-in"
+  class="container-custom text-center py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-2xl sm:text-3xl font-bold mb-4">Contacto</h2>
-  <p class="mb-6 text-base sm:text-lg">
+  <h2>Contacto</h2>
+  <p class="mb-6">
     ¿Tienes un proyecto en mente? Escríbeme:
   </p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
@@ -182,36 +183,38 @@
 <button id="toTop" aria-label="Volver arriba">↑</button>
 
 <script>
-  // Parallax dinámico en Hero
-  const hero = document.getElementById("hero");
-  window.addEventListener("scroll", () => {
-    const offset = window.pageYOffset;
-    hero.style.backgroundPositionY = `${offset * 0.5}px`;
-  });
+  // PARALLAX SUAVE solo en desktop/tablet
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    const hero = document.getElementById("hero");
+    let scrollY = 0, currentY = 0;
+    window.addEventListener("scroll", () => scrollY = window.pageYOffset);
+    function smoothParallax() {
+      currentY += (scrollY - currentY) * 0.1;
+      hero.style.backgroundPositionY = `${currentY * 0.5}px`;
+      requestAnimationFrame(smoothParallax);
+    }
+    smoothParallax();
+  }
 
   // Carrusel con navegación, auto-play e indicadores
   const carousel = document.getElementById("mini-carousel");
   const dotsContainer = document.getElementById("dots");
   const items = carousel.children.length;
   let current = 0;
-
-  // Crear indicadores
   for (let i = 0; i < items; i++) {
     const dot = document.createElement("span");
     dotsContainer.append(dot);
   }
   const dots = Array.from(dotsContainer.children);
-
   function goTo(idx) {
     current = (idx + items) % items;
     const target = carousel.children[current];
     carousel.scrollTo({
-      left: target.offsetLeft - (carousel.offsetWidth - target.offsetWidth) / 2,
+      left: target.offsetLeft - (carousel.offsetWidth - target.offsetWidth)/2,
       behavior: "smooth"
     });
-    dots.forEach((d,i) => d.classList.toggle("active", i === current));
+    dots.forEach((d,i) => d.classList.toggle("active", i===current));
   }
-
   document.getElementById("carousel-prev").onclick = () => goTo(current - 1);
   document.getElementById("carousel-next").onclick = () => goTo(current + 1);
   setInterval(() => goTo(current + 1), 5000);
@@ -238,8 +241,7 @@
   window.addEventListener("scroll", () => {
     toTop.classList.toggle("show", window.pageYOffset > 400);
   });
-  toTop.onclick = () =>
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  toTop.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
 </script>
 </main>
 
