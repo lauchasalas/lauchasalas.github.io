@@ -2,9 +2,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{{ title | default("Mi Portfolio") }}</title>
+  <meta name="description" content="{{ description | default("Fotógrafo y especialista en marketing visual.") }}">
+  <meta property="og:title" content="{{ title }} | Lautaro Salas Ane">
+  <meta property="og:description" content="{{ description }}">
+  <meta property="og:image" content="https://lauchasalas.github.io/photos/hero.jpg">
+
   <link rel="stylesheet" href="/css/styles.css">
   <!-- Lightbox CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Lightbox tweaks estilo Apple */
+    .lightboxOverlay { background: rgba(0,0,0,0.9) !important; }
+    .lb-data .lb-number, .lb-data .lb-caption {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      opacity: 0.8;
+    }
+  </style>
 </head>

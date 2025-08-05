@@ -11,31 +11,35 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    @apply bg-white text-gray-900;
+    @apply bg-gray-50 text-gray-900;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
                  "Helvetica Neue", Arial, sans-serif;
     line-height: 1.8;
   }
-  a { @apply underline-offset-4 hover:underline; }
+  a { @apply text-blue-600 underline-offset-4 hover:underline; }
   h1, h2, h3 {
     @apply font-bold text-gray-900 tracking-tight;
     letter-spacing: -0.02em;
   }
-  h1 { @apply mb-6; }
-  h2 { @apply mb-4; }
+  h1 { @apply text-5xl md:text-7xl mb-6; }
+  h2 { @apply text-3xl md:text-4xl mb-4; }
   p  { @apply mb-8 text-base md:text-lg text-gray-700; }
 }
 
 /* -----------------------------------
-   3️⃣ Components Layer: Header & Hero
+   3️⃣ Components Layer: Header, Hero,
+      Carrusel, Grid & Back-to-Top
 ----------------------------------- */
 @layer components {
+  /* Header fijo con blur */
   header {
     @apply sticky top-0 z-50 bg-white/70 backdrop-blur-md;
   }
   nav a {
     @apply text-gray-800 hover:text-gray-900 transition-colors duration-200 px-4 py-2 font-medium;
   }
+
+  /* Hero full-screen con overlay */
   .hero-section {
     @apply relative h-screen bg-cover bg-center flex items-center justify-center;
   }
@@ -55,28 +59,34 @@
   .btn-primary {
     @apply bg-black text-white font-semibold py-3 px-8 rounded-full hover:bg-gray-900 transition duration-200;
   }
-}
 
-/* -----------------------------------
-   4️⃣ Components Layer: Mini-Carrusel & Thumb–Grid
------------------------------------ */
-@layer components {
+  /* Mini-Carrusel */
   .mini-carousel {
     @apply overflow-x-auto snap-x snap-mandatory flex gap-4 px-6 py-6 scrollbar-hide;
   }
   .mini-carousel img {
     @apply flex-none w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover transition-transform duration-300 hover:scale-105;
   }
+
+  /* Thumb–Grid */
   .thumb-grid {
     @apply grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-4 px-6 py-6;
   }
   .thumb-grid img {
     @apply w-full h-24 object-cover rounded-lg shadow-sm transition-transform duration-200 hover:scale-110;
   }
+
+  /* Back-to-Top button */
+  #toTop {
+    @apply fixed bottom-8 right-8 bg-black/70 text-white p-3 rounded-full transition-opacity duration-300 opacity-0 pointer-events-none;
+  }
+  #toTop.show {
+    @apply opacity-100 pointer-events-auto;
+  }
 }
 
 /* -----------------------------------
-   5️⃣ Utilities Layer & Animaciones
+   4️⃣ Utilities Layer & Animaciones
 ----------------------------------- */
 @layer utilities {
   .scrollbar-hide::-webkit-scrollbar { display: none; }
@@ -89,14 +99,4 @@
 .fade-in {
   opacity: 0;
   animation: fade-in 0.8s ease-out forwards;
-}
-
-/* -----------------------------------
-   6️⃣ Botón Back-to-Top
------------------------------------ */
-#toTop {
-  @apply fixed bottom-8 right-8 bg-black/70 text-white p-3 rounded-full transition-opacity duration-300 opacity-0 pointer-events-none;
-}
-#toTop.show {
-  @apply opacity-100 pointer-events-auto;
 }

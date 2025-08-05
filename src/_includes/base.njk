@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   {% include "head.njk" %}
-  <body class="bg-white text-gray-900">
+  <body>
     {% include "header.njk" %}
     <main>
       {{ content | safe }}
@@ -14,14 +14,25 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true });
-      // Back-to-top button
-      const btn = document.getElementById("toTop");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) btn.classList.add("show");
-        else btn.classList.remove("show");
+
+      // Carrusel
+      const carousel = document.querySelector('.mini-carousel');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      if (carousel && prevBtn && nextBtn) {
+        prevBtn.onclick = () => carousel.scrollBy({ left: -carousel.offsetWidth*0.8, behavior:'smooth' });
+        nextBtn.onclick = () => carousel.scrollBy({ left: carousel.offsetWidth*0.8, behavior:'smooth' });
+      }
+
+      // Back-to-Top
+      const toTop = document.getElementById('toTop');
+      window.addEventListener('scroll', () => {
+        toTop.classList.toggle('show', window.scrollY > window.innerHeight);
       });
-      btn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+      toTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     </script>
-    <button id="toTop">↑</button>
+    <button id="toTop" aria-label="Back to top">⬆︎</button>
   </body>
 </html>

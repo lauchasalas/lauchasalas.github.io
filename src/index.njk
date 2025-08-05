@@ -22,11 +22,9 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-24 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre mí</h2>
+  <h2>Sobre mí</h2>
   <p class="max-w-3xl mx-auto leading-relaxed">
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital.
-    Mi pasión es capturar momentos auténticos y convertirlos
-    en historias visuales inolvidables.
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital. Mi pasión es capturar momentos auténticos y convertirlos en historias visuales inolvidables.
   </p>
 </section>
 
@@ -53,7 +51,9 @@ description: "Portfolio — Lautaro Salas Ane"
   <h2 class="container-custom text-3xl font-bold mb-6">Galería Completa</h2>
   <div class="thumb-grid">
     {% for photo in collections.photo %}
-      <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
+      <a href="{{ photo.url }}" data-lightbox="gallery" data-title="{{ photo.data.title }}">
+        <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
+      </a>
     {% endfor %}
   </div>
 </section>
