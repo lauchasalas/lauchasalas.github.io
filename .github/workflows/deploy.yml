@@ -5,8 +5,8 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: write
-  pages: write
+  contents: read          # sólo lee el contenido de main
+  pages: write            # permiso para Pages
   id-token: write
 
 jobs:
@@ -14,11 +14,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout code
         uses: actions/checkout@v3
         with:
-          persist-credentials: true  # Usa GITHUB_TOKEN para push
-          fetch-depth: 0            # Clona todo el historial
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
@@ -26,14 +25,14 @@ jobs:
           node-version: '16'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build CSS & HTML
+      - name: Build site
         run: npm run build
 
-      - name: Deploy to GitHub Pages
+      - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_branch: main
           publish_dir: ./docs
+          publish_branch: gh-pages
