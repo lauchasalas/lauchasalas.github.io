@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   {% include "head.njk" %}
-  <body class="pt-16 bg-gray-50 text-gray-900">
+  <body class="pt-16 bg-gray-50 text-gray-900 font-sans">
     <!-- HEADER -->
     <header>
       <nav class="container-custom flex items-center justify-between h-16">
@@ -26,25 +26,44 @@
       </ul>
     </header>
 
-    <main>
-      {{ content | safe }}
-    </main>
+    <main>{{ content | safe }}</main>
 
     {% include "footer.njk" %}
 
-    <!-- Lightbox JS -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"
-    ></script>
-    <!-- AOS JS -->
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true });
-      document
-        .getElementById("mobile-menu-button")
-        .addEventListener("click", () => {
-          document.getElementById("mobile-menu").classList.toggle("hidden");
+
+      // Menú móvil
+      document.getElementById("mobile-menu-button").onclick = () => {
+        document.getElementById("mobile-menu").classList.toggle("hidden");
+      };
+
+      // Resaltar sección activa
+      const sections = document.querySelectorAll("section[id]");
+      const navLinks = document.querySelectorAll("nav a.nav-link");
+      window.addEventListener("scroll", () => {
+        const scrollY = window.pageYOffset;
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 100;
+          const bottom = top + sec.offsetHeight;
+          const link = document.querySelector(`nav a[href="#${sec.id}"]`);
+          if (scrollY >= top && scrollY < bottom) {
+            navLinks.forEach(a => a.classList.remove("active"));
+            if (link) link.classList.add("active");
+          }
         });
+      });
+
+      // Back to Top
+      const toTop = document.getElementById("toTop");
+      window.addEventListener("scroll", () => {
+        toTop.classList.toggle("show", window.pageYOffset > 400);
+      });
+      toTop.onclick = () =>
+        window.scrollTo({ top: 0, behavior: "smooth" });
     </script>
   </body>
 </html>

@@ -25,22 +25,22 @@ title: "Inicio"
   <h2>Sobre mí</h2>
   <p>
     Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
-    apasionado por convertir momentos auténticos en historias visuales
-    inolvidables.
+    apasionado por convertir momentos auténticos en historias visuales inolvidables.
   </p>
 </section>
 
-<!-- PORTFOLIO (mini-carrusel) -->
+<!-- PORTFOLIO (mini-carrusel + indicadores) -->
 <section class="fade-in" data-aos="fade-right">
   <h2 class="container-custom text-2xl font-bold mb-4">Explora mis Fotos</h2>
   <div class="mini-carousel-wrapper">
     <button class="carousel-button prev" id="carousel-prev">‹</button>
-    <div id="mini-carousel" class="mini-carousel">
+    <div id="mini-carousel" class="mini-carousel scrollbar-hide">
       {% for photo in collections.photo %}
         <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
       {% endfor %}
     </div>
     <button class="carousel-button next" id="carousel-next">›</button>
+    <div id="dots"></div>
   </div>
 </section>
 
@@ -73,23 +73,66 @@ title: "Inicio"
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
 </section>
 
+<!-- Back to Top -->
+<button id="toTop" aria-label="Volver arriba">↑</button>
+
 <script>
-  // Scroll manual con botones
-  const mini = document.getElementById("mini-carousel");
-  document.getElementById("carousel-prev").onclick = () =>
-    mini.scrollBy({ left: -mini.offsetWidth * 0.4, behavior: "smooth" });
-  document.getElementById("carousel-next").onclick = () =>
-    mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
-
-  // Auto-scroll cada 4 segundos
-  setInterval(() => {
-    mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
-  }, 4000);
-
-  // Parallax ligero en el Hero
+  // Parallax dinámico en Hero
   const hero = document.getElementById("hero");
   window.addEventListener("scroll", () => {
     const offset = window.pageYOffset;
     hero.style.backgroundPositionY = `${offset * 0.5}px`;
   });
+
+  // Carrusel con navegación, auto-play e indicadores
+  const carousel = document.getElementById("mini-carousel");
+  const dotsContainer = document.getElementById("dots");
+  const items = carousel.children.length;
+  let current = 0;
+
+  // Crear indicadores
+  for (let i = 0; i < items; i++) {
+    const dot = document.createElement("span");
+    dotsContainer.append(dot);
+  }
+  const dots = Array.from(dotsContainer.children);
+
+  function goTo(idx) {
+    current = (idx + items) % items;
+    const target = carousel.children[current];
+    carousel.scrollTo({
+      left: target.offsetLeft - (carousel.offsetWidth - target.offsetWidth) / 2,
+      behavior: "smooth"
+    });
+    dots.forEach((d,i) => d.classList.toggle("active", i === current));
+  }
+
+  document.getElementById("carousel-prev").onclick = () => goTo(current - 1);
+  document.getElementById("carousel-next").onclick = () => goTo(current + 1);
+  setInterval(() => goTo(current + 1), 5000);
+  goTo(0);
+
+  // Sección activa en navbar
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll("nav a.nav-link");
+  window.addEventListener("scroll", () => {
+    const y = window.pageYOffset;
+    sections.forEach(sec => {
+      const top = sec.offsetTop - 100;
+      const bottom = top + sec.offsetHeight;
+      const link = document.querySelector(`nav a[href="#${sec.id}"]`);
+      if (y >= top && y < bottom) {
+        navLinks.forEach(a => a.classList.remove("active"));
+        if (link) link.classList.add("active");
+      }
+    });
+  });
+
+  // Back to Top
+  const toTop = document.getElementById("toTop");
+  window.addEventListener("scroll", () => {
+    toTop.classList.toggle("show", window.pageYOffset > 400);
+  });
+  toTop.onclick = () =>
+    window.scrollTo({ top: 0, behavior: "smooth" });
 </script>
