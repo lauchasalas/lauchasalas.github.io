@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+  <body class="bg-white text-gray-900">
+    <header>
+  <nav class="container-custom flex justify-between items-center py-4">
+    <a href="/" class="text-xl font-bold hover:opacity-80 transition">Lautaro Salas Ane</a>
+    <ul class="flex space-x-6 text-sm uppercase tracking-wide">
+      <li><a href="#sobre-mi">Sobre mí</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#galeria">Galería</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+    <main>
+      
+<!-- Hero Section -->
+<section
+  class="hero-section fade-in"
+  style="background-image: url('/photos/hero.jpg')"
+>
+  <div class="hero-overlay">
+    <h1 class="hero-title">Capturando Momentos</h1>
+    <p class="hero-subtitle">Fotografía profesional & Marketing visual</p>
+    <a href="#portfolio" class="btn-primary">Ver Portfolio</a>
+  </div>
+</section>
+
+<!-- Sobre mí -->
+<section
+  id="sobre-mi"
+  class="container-custom py-24 text-center fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre mí</h2>
+  <p class="max-w-3xl mx-auto leading-relaxed">
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital.
+    Mi pasión es capturar momentos auténticos y convertirlos
+    en historias visuales inolvidables.
+  </p>
+</section>
+
+<!-- Mini-Carrusel Horizontal -->
+<section
+  id="portfolio"
+  class="fade-in"
+  data-aos="fade-right"
+>
+  <h2 class="container-custom text-3xl font-bold mb-6">Explora mis Fotos</h2>
+  <div class="mini-carousel">
+    
+      <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+    
+      <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+    
+      <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+    
+      <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+    
+      <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+    
+      <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+    
+      <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+    
+      <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+    
+      <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+    
+      <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+    
+      <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+    
+      <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+    
+  </div>
+</section>
+
+<!-- Grid de Miniaturas -->
+<section
+  id="galeria"
+  class="fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="container-custom text-3xl font-bold mb-6">Galería Completa</h2>
+  <div class="thumb-grid">
+    
+      <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+    
+      <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+    
+      <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+    
+      <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+    
+      <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+    
+      <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+    
+      <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+    
+      <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+    
+      <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+    
+      <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+    
+      <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+    
+      <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+    
+  </div>
+</section>
+
+<!-- Contacto -->
+<section
+  id="contacto"
+  class="container-custom py-24 text-center fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Contacto</h2>
+  <p class="mb-6">¿Tienes un proyecto en mente? Escríbeme:</p>
+  <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
+</section>
+
+    </main>
+    <footer class="py-6 text-center bg-gray-100">
+  <p class="text-sm text-gray-600">
+    &copy; 2025 Lautaro Salas Ane. Todos los derechos reservados.
+  </p>
+</footer>
+
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+      // Back-to-top button
+      const btn = document.getElementById("toTop");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 300) btn.classList.add("show");
+        else btn.classList.remove("show");
+      });
+      btn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+    </script>
+    <button id="toTop">↑</button>
+  </body>
+</html>
