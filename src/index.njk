@@ -19,19 +19,18 @@ title: "Inicio"
 <!-- SOBRE MÍ -->
 <section
   id="sobre-mi"
-  class="container-custom text-center py-16 fade-in"
+  class="container-custom text-center py-12 sm:py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2>Sobre mí</h2>
-  <p>
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
-    apasionado por convertir momentos auténticos en historias visuales inolvidables.
+  <h2 class="text-2xl sm:text-3xl font-bold mb-4">Sobre mí</h2>
+  <p class="mx-auto max-w-lg sm:max-w-xl text-base sm:text-lg leading-relaxed">
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital, apasionado por convertir momentos auténticos en historias visuales inolvidables.
   </p>
 </section>
 
 <!-- PORTFOLIO (mini-carrusel + indicadores) -->
 <section class="fade-in" data-aos="fade-right">
-  <h2 class="container-custom text-2xl font-bold mb-4">Explora mis Fotos</h2>
+  <h2 class="container-custom text-xl sm:text-2xl font-bold mb-4">Explora mis Fotos</h2>
   <div class="mini-carousel-wrapper">
     <button class="carousel-button prev" id="carousel-prev">‹</button>
     <div id="mini-carousel" class="mini-carousel scrollbar-hide">
@@ -50,7 +49,7 @@ title: "Inicio"
   class="container-custom fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-2xl font-bold mb-6">Galería Completa</h2>
+  <h2 class="text-xl sm:text-2xl font-bold mb-6">Galería Completa</h2>
   <div class="thumb-grid">
     {% for photo in collections.photo %}
       <a href="{{ photo.url }}" data-lightbox="galeria">
@@ -63,11 +62,11 @@ title: "Inicio"
 <!-- CONTACTO -->
 <section
   id="contacto"
-  class="container-custom text-center py-16 fade-in"
+  class="container-custom text-center py-12 sm:py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2>Contacto</h2>
-  <p class="mb-6">
+  <h2 class="text-2xl sm:text-3xl font-bold mb-4">Contacto</h2>
+  <p class="mb-6 text-base sm:text-lg">
     ¿Tienes un proyecto en mente? Escríbeme:
   </p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
@@ -128,7 +127,7 @@ title: "Inicio"
     });
   });
 
-  // Back to Top
+  // Back to Top suave
   const toTop = document.getElementById("toTop");
   window.addEventListener("scroll", () => {
     toTop.classList.toggle("show", window.pageYOffset > 400);
