@@ -1,16 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  // ⚠️ Aquí le indicas a Tailwind dónde buscar tus clases
+  darkMode: 'media',
   content: [
-    "./src/**/*.{njk,html,js}",   // todas tus plantillas y scripts
-    "./src/css/**/*.css"          // tu CSS con @tailwind y @apply
+    "./src/**/*.{njk,html,js}",
+    "./src/css/**/*.css"
   ],
   theme: {
     extend: {
-      // añade aquí paletas o tipografías extra si quieres
-    },
+      keyframes: {
+        ripple: {
+          '0%': { transform: 'scale(0)', opacity: '0.5' },
+          '100%': { transform: 'scale(2.5)', opacity: '0' },
+        }
+      },
+      animation: {
+        ripple: 'ripple 0.6s ease-out',
+      }
+    }
   },
-  plugins: [
-    // Ejemplo: require('@tailwindcss/forms'),
-  ],
+  plugins: [],
 };

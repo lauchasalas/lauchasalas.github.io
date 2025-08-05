@@ -4,43 +4,49 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Inicio</title>
-  <meta name="description" content="Portfolio — Lautaro Salas Ane">
-  <meta property="og:title" content="Inicio | Lautaro Salas Ane">
-  <meta property="og:description" content="Portfolio — Lautaro Salas Ane">
-  <meta property="og:image" content="https://lauchasalas.github.io/photos/hero.jpg">
-
   <link rel="stylesheet" href="/css/styles.css">
   <!-- Lightbox CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
+    rel="stylesheet"
+  >
   <!-- AOS CSS -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-  <style>
-    /* Lightbox tweaks estilo Apple */
-    .lightboxOverlay { background: rgba(0,0,0,0.9) !important; }
-    .lb-data .lb-number, .lb-data .lb-caption {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
-      opacity: 0.8;
-    }
-  </style>
+  <link
+    href="https://unpkg.com/aos@2.3.1/dist/aos.css"
+    rel="stylesheet"
+  >
 </head>
 
-  <body>
+  <body class="pt-16 bg-gray-50 text-gray-900">
+    <!-- HEADER -->
     <header>
-  <nav class="container-custom flex justify-between items-center py-4">
-    <a href="/" class="text-xl font-bold hover:opacity-80 transition">Lautaro Salas Ane</a>
-    <ul class="flex space-x-6 text-sm uppercase tracking-wide">
-      <li><a href="#sobre-mi">Sobre mí</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#galeria">Galería</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </nav>
-</header>
+      <nav class="container-custom flex items-center justify-between h-16">
+        <a href="/" class="text-xl font-bold">Lautaro Salas Ane</a>
+        <ul class="hidden md:flex space-x-6">
+          <li><a href="#sobre-mi" class="nav-link">Sobre mí</a></li>
+          <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+          <li><a href="#galeria" class="nav-link">Galería</a></li>
+          <li><a href="#contacto" class="nav-link">Contacto</a></li>
+        </ul>
+        <button id="mobile-menu-button" class="md:hidden p-2">
+          <span class="block w-5 h-0.5 bg-white mb-1"></span>
+          <span class="block w-5 h-0.5 bg-white mb-1"></span>
+          <span class="block w-5 h-0.5 bg-white"></span>
+        </button>
+      </nav>
+      <ul id="mobile-menu" class="hidden bg-gray-800 text-white">
+        <li><a href="#sobre-mi" class="block px-4 py-2">Sobre mí</a></li>
+        <li><a href="#portfolio" class="block px-4 py-2">Portfolio</a></li>
+        <li><a href="#galeria" class="block px-4 py-2">Galería</a></li>
+        <li><a href="#contacto" class="block px-4 py-2">Contacto</a></li>
+      </ul>
+    </header>
 
     <main>
       
-<!-- Hero Section -->
+<!-- HERO -->
 <section
+  id="hero"
   class="hero-section fade-in"
   style="background-image: url('/photos/hero.jpg')"
 >
@@ -51,158 +57,172 @@
   </div>
 </section>
 
-<!-- Sobre mí -->
+<!-- SOBRE MÍ -->
 <section
   id="sobre-mi"
-  class="container-custom py-24 text-center fade-in"
+  class="container-custom text-center py-16 fade-in"
   data-aos="fade-up"
 >
   <h2>Sobre mí</h2>
-  <p class="max-w-3xl mx-auto leading-relaxed">
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital. Mi pasión es capturar momentos auténticos y convertirlos en historias visuales inolvidables.
+  <p>
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
+    apasionado por convertir momentos auténticos en historias visuales
+    inolvidables.
   </p>
 </section>
 
-<!-- Mini-Carrusel Horizontal -->
-<section
-  id="portfolio"
-  class="fade-in"
-  data-aos="fade-right"
->
-  <h2 class="container-custom text-3xl font-bold mb-6">Explora mis Fotos</h2>
-  <div class="mini-carousel">
-    
-      <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
-    
-      <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
-    
-      <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
-    
-      <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
-    
-      <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
-    
-      <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
-    
-      <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
-    
-      <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
-    
-      <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
-    
-      <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
-    
-      <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
-    
-      <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
-    
+<!-- PORTFOLIO (mini-carrusel) -->
+<section class="fade-in" data-aos="fade-right">
+  <h2 class="container-custom text-2xl font-bold mb-4">Explora mis Fotos</h2>
+  <div class="mini-carousel-wrapper">
+    <button class="carousel-button prev" id="carousel-prev">‹</button>
+    <div id="mini-carousel" class="mini-carousel">
+      
+        <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+      
+        <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+      
+        <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+      
+        <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+      
+        <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+      
+        <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+      
+        <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+      
+        <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+      
+        <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+      
+        <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+      
+        <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+      
+        <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+      
+    </div>
+    <button class="carousel-button next" id="carousel-next">›</button>
   </div>
 </section>
 
-<!-- Grid de Miniaturas -->
+<!-- GALERÍA COMPLETA -->
 <section
   id="galeria"
-  class="fade-in"
+  class="container-custom fade-in"
   data-aos="fade-up"
 >
-  <h2 class="container-custom text-3xl font-bold mb-6">Galería Completa</h2>
+  <h2 class="text-2xl font-bold mb-6">Galería Completa</h2>
   <div class="thumb-grid">
     
-      <a href="/photos/hero.jpg" data-lightbox="gallery" data-title="hero">
+      <a href="/photos/hero.jpg" data-lightbox="galeria">
         <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
       </a>
     
-      <a href="/photos/photo1.jpg" data-lightbox="gallery" data-title="photo1">
+      <a href="/photos/photo1.jpg" data-lightbox="galeria">
         <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
       </a>
     
-      <a href="/photos/photo10.jpg" data-lightbox="gallery" data-title="photo10">
+      <a href="/photos/photo10.jpg" data-lightbox="galeria">
         <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
       </a>
     
-      <a href="/photos/photo11.jpg" data-lightbox="gallery" data-title="photo11">
+      <a href="/photos/photo11.jpg" data-lightbox="galeria">
         <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
       </a>
     
-      <a href="/photos/photo2.jpg" data-lightbox="gallery" data-title="photo2">
+      <a href="/photos/photo2.jpg" data-lightbox="galeria">
         <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
       </a>
     
-      <a href="/photos/photo3.jpg" data-lightbox="gallery" data-title="photo3">
+      <a href="/photos/photo3.jpg" data-lightbox="galeria">
         <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
       </a>
     
-      <a href="/photos/photo4.jpg" data-lightbox="gallery" data-title="photo4">
+      <a href="/photos/photo4.jpg" data-lightbox="galeria">
         <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
       </a>
     
-      <a href="/photos/photo5.jpg" data-lightbox="gallery" data-title="photo5">
+      <a href="/photos/photo5.jpg" data-lightbox="galeria">
         <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
       </a>
     
-      <a href="/photos/photo6.jpg" data-lightbox="gallery" data-title="photo6">
+      <a href="/photos/photo6.jpg" data-lightbox="galeria">
         <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
       </a>
     
-      <a href="/photos/photo7.jpg" data-lightbox="gallery" data-title="photo7">
+      <a href="/photos/photo7.jpg" data-lightbox="galeria">
         <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
       </a>
     
-      <a href="/photos/photo8.jpg" data-lightbox="gallery" data-title="photo8">
+      <a href="/photos/photo8.jpg" data-lightbox="galeria">
         <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
       </a>
     
-      <a href="/photos/photo9.jpg" data-lightbox="gallery" data-title="photo9">
+      <a href="/photos/photo9.jpg" data-lightbox="galeria">
         <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
       </a>
     
   </div>
 </section>
 
-<!-- Contacto -->
+<!-- CONTACTO -->
 <section
   id="contacto"
-  class="container-custom py-24 text-center fade-in"
+  class="container-custom text-center py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-3xl md:text-4xl font-bold mb-4">Contacto</h2>
-  <p class="mb-6">¿Tienes un proyecto en mente? Escríbeme:</p>
+  <h2>Contacto</h2>
+  <p class="mb-6">
+    ¿Tienes un proyecto en mente? Escríbeme:
+  </p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
 </section>
 
+<script>
+  // Scroll manual con botones
+  const mini = document.getElementById("mini-carousel");
+  document.getElementById("carousel-prev").onclick = () =>
+    mini.scrollBy({ left: -mini.offsetWidth * 0.4, behavior: "smooth" });
+  document.getElementById("carousel-next").onclick = () =>
+    mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
+
+  // Auto-scroll cada 4 segundos
+  setInterval(() => {
+    mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
+  }, 4000);
+
+  // Parallax ligero en el Hero
+  const hero = document.getElementById("hero");
+  window.addEventListener("scroll", () => {
+    const offset = window.pageYOffset;
+    hero.style.backgroundPositionY = `${offset * 0.5}px`;
+  });
+</script>
+
     </main>
-    <footer class="py-6 text-center bg-gray-100">
-  <p class="text-sm text-gray-600">
-    &copy; 2025 Lautaro Salas Ane. Todos los derechos reservados.
-  </p>
+
+    <footer class="bg-gray-900 text-white py-8 mt-16">
+  <div class="container-custom text-center">
+    <p class="text-sm">&copy; 2025 Lautaro Salas Ane. Todos los derechos reservados.</p>
+  </div>
 </footer>
 
 
     <!-- Lightbox JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"
+    ></script>
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true });
-
-      // Carrusel
-      const carousel = document.querySelector('.mini-carousel');
-      const prevBtn = document.getElementById('carousel-prev');
-      const nextBtn = document.getElementById('carousel-next');
-      if (carousel && prevBtn && nextBtn) {
-        prevBtn.onclick = () => carousel.scrollBy({ left: -carousel.offsetWidth*0.8, behavior:'smooth' });
-        nextBtn.onclick = () => carousel.scrollBy({ left: carousel.offsetWidth*0.8, behavior:'smooth' });
-      }
-
-      // Back-to-Top
-      const toTop = document.getElementById('toTop');
-      window.addEventListener('scroll', () => {
-        toTop.classList.toggle('show', window.scrollY > window.innerHeight);
-      });
-      toTop.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
+      document
+        .getElementById("mobile-menu-button")
+        .addEventListener("click", () => {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
     </script>
-    <button id="toTop" aria-label="Back to top">⬆︎</button>
   </body>
 </html>

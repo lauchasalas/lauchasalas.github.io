@@ -1,11 +1,11 @@
 ---
 layout: base.njk
 title: "Inicio"
-description: "Portfolio — Lautaro Salas Ane"
 ---
 
-<!-- Hero Section -->
+<!-- HERO -->
 <section
+  id="hero"
   class="hero-section fade-in"
   style="background-image: url('/photos/hero.jpg')"
 >
@@ -16,55 +16,80 @@ description: "Portfolio — Lautaro Salas Ane"
   </div>
 </section>
 
-<!-- Sobre mí -->
+<!-- SOBRE MÍ -->
 <section
   id="sobre-mi"
-  class="container-custom py-24 text-center fade-in"
+  class="container-custom text-center py-16 fade-in"
   data-aos="fade-up"
 >
   <h2>Sobre mí</h2>
-  <p class="max-w-3xl mx-auto leading-relaxed">
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital. Mi pasión es capturar momentos auténticos y convertirlos en historias visuales inolvidables.
+  <p>
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
+    apasionado por convertir momentos auténticos en historias visuales
+    inolvidables.
   </p>
 </section>
 
-<!-- Mini-Carrusel Horizontal -->
-<section
-  id="portfolio"
-  class="fade-in"
-  data-aos="fade-right"
->
-  <h2 class="container-custom text-3xl font-bold mb-6">Explora mis Fotos</h2>
-  <div class="mini-carousel">
-    {% for photo in collections.photo %}
-      <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
-    {% endfor %}
+<!-- PORTFOLIO (mini-carrusel) -->
+<section class="fade-in" data-aos="fade-right">
+  <h2 class="container-custom text-2xl font-bold mb-4">Explora mis Fotos</h2>
+  <div class="mini-carousel-wrapper">
+    <button class="carousel-button prev" id="carousel-prev">‹</button>
+    <div id="mini-carousel" class="mini-carousel">
+      {% for photo in collections.photo %}
+        <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
+      {% endfor %}
+    </div>
+    <button class="carousel-button next" id="carousel-next">›</button>
   </div>
 </section>
 
-<!-- Grid de Miniaturas -->
+<!-- GALERÍA COMPLETA -->
 <section
   id="galeria"
-  class="fade-in"
+  class="container-custom fade-in"
   data-aos="fade-up"
 >
-  <h2 class="container-custom text-3xl font-bold mb-6">Galería Completa</h2>
+  <h2 class="text-2xl font-bold mb-6">Galería Completa</h2>
   <div class="thumb-grid">
     {% for photo in collections.photo %}
-      <a href="{{ photo.url }}" data-lightbox="gallery" data-title="{{ photo.data.title }}">
+      <a href="{{ photo.url }}" data-lightbox="galeria">
         <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
       </a>
     {% endfor %}
   </div>
 </section>
 
-<!-- Contacto -->
+<!-- CONTACTO -->
 <section
   id="contacto"
-  class="container-custom py-24 text-center fade-in"
+  class="container-custom text-center py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-3xl md:text-4xl font-bold mb-4">Contacto</h2>
-  <p class="mb-6">¿Tienes un proyecto en mente? Escríbeme:</p>
+  <h2>Contacto</h2>
+  <p class="mb-6">
+    ¿Tienes un proyecto en mente? Escríbeme:
+  </p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
 </section>
+
+<script>
+  // Scroll manual con botones
+  const mini = document.getElementById("mini-carousel");
+  document.getElementById("carousel-prev").onclick = () =>
+    mini.scrollBy({ left: -mini.offsetWidth * 0.4, behavior: "smooth" });
+  document.getElementById("carousel-next").onclick = () =>
+    mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
+
+  // Auto-scroll cada 4 segundos
+  setInterval(() => {
+    mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
+  }, 4000);
+
+  // Parallax ligero en el Hero
+  const hero = document.getElementById("hero");
+  window.addEventListener("scroll", () => {
+    const offset = window.pageYOffset;
+    hero.style.backgroundPositionY = `${offset * 0.5}px`;
+  });
+</script>
