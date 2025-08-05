@@ -1,8 +1,12 @@
+cat << 'EOF' > .github/workflows/deploy.yml
 name: Deploy Eleventy + Tailwind to GitHub Pages
 
 on:
   push:
     branches: [ main ]
+
+permissions:
+  contents: write         # Permite al action hacer push
 
 jobs:
   build_and_deploy:
@@ -11,8 +15,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          persist-credentials: true  # Usa GITHUB_TOKEN para push
 
-      - name: Use Node.js v16
+      - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: '16'
@@ -28,4 +34,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs
-
+          publish_branch: main      # Publica en main, no gh-pages
+EOF
