@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
++  <!-- ESTO ES SÓLO PARA TESTEAR QUE EL BROWSER APLIQUE ESTILOS -->
++  <style>
++    /* Deberías ver un borde rojo alrededor de TODO el body */
++    body { border: 10px solid red !important; }
++    /* Deberías ver un contorno punteado azul en el hero */
++    .hero-section { outline: 5px dashed blue !important; }
++  </style>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Inicio</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <!-- Lightbox CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+  <!-- AOS CSS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+</head>
+
+  <body class="bg-gray-50 text-gray-900">
+    <header>
+  <nav class="container-custom flex justify-between items-center py-4">
+    <a href="/" class="text-xl font-bold">Lautaro Salas Ane</a>
+    <div>
+      <a href="#sobre-mi">Sobre mí</a>
+      <a href="#mini-gallery">Portfolio</a>
+      <a href="#galeria">Galería</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </nav>
+</header>
+
+    <main>
+      
+<!-- Hero al estilo Apple -->
+<section 
+  class="hero-section" 
+  style="background-image: url('/photos/hero.jpg')">
+  <div class="hero-overlay fade-in" data-aos="zoom-in">
+    <h1 class="hero-title">Capturando Momentos</h1>
+    <p class="hero-subtitle">Fotografía profesional & Marketing visual</p>
+    <a href="#mini-gallery" class="btn-primary">Ver Portfolio</a>
+  </div>
+</section>
+
+<!-- Sobre mí -->
+<section 
+  id="sobre-mi" 
+  class="container-custom py-16 text-center fade-in" 
+  data-aos="fade-up">
+  <h2 class="text-3xl md:text-4xl font-bold mb-6">Sobre mí</h2>
+  <p class="max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital. Mi pasión es capturar
+    momentos auténticos y convertirlos en historias visuales inolvidables.
+  </p>
+</section>
+
+<!-- Mini-Carrusel de Thumbnails -->
+<section 
+  id="mini-gallery" 
+  class="container-custom py-16" 
+  data-aos="fade-right">
+  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center fade-in">Explora mis Fotos</h2>
+  <div class="mini-carousel fade-in">
+    
+      <a href="/photos/hero.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo1.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo10.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo11.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo2.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo3.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo4.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo5.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo6.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo7.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo8.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo9.jpg" data-lightbox="gallery" class="snap-center">
+        <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+      </a>
+    
+  </div>
+</section>
+
+<!-- Mini-Cuadrícula al estilo Pixpa -->
+<section 
+  id="thumb-grid" 
+  class="container-custom py-16 fade-in" 
+  data-aos="fade-up">
+  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Mis Proyectos</h2>
+  <div class="thumb-grid">
+    
+      <a href="/photos/hero.jpg" data-lightbox="gallery">
+        <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo1.jpg" data-lightbox="gallery">
+        <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo10.jpg" data-lightbox="gallery">
+        <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo11.jpg" data-lightbox="gallery">
+        <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo2.jpg" data-lightbox="gallery">
+        <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo3.jpg" data-lightbox="gallery">
+        <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo4.jpg" data-lightbox="gallery">
+        <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo5.jpg" data-lightbox="gallery">
+        <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo6.jpg" data-lightbox="gallery">
+        <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo7.jpg" data-lightbox="gallery">
+        <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo8.jpg" data-lightbox="gallery">
+        <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+      </a>
+    
+      <a href="/photos/photo9.jpg" data-lightbox="gallery">
+        <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+      </a>
+    
+  </div>
+</section>
+
+<!-- Galería en Cuadrícula Grande -->
+<section 
+  id="galeria" 
+  class="container-custom py-16 fade-in" 
+  data-aos="fade-up">
+  <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Galería Completa</h2>
+  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
+    
+      <img src="/photos/hero.jpg" alt="hero" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo1.jpg" alt="photo1" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo10.jpg" alt="photo10" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo11.jpg" alt="photo11" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo2.jpg" alt="photo2" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo3.jpg" alt="photo3" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo4.jpg" alt="photo4" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo5.jpg" alt="photo5" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo6.jpg" alt="photo6" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo7.jpg" alt="photo7" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo8.jpg" alt="photo8" class="rounded-lg shadow-lg" />
+    
+      <img src="/photos/photo9.jpg" alt="photo9" class="rounded-lg shadow-lg" />
+    
+  </div>
+</section>
+
+<!-- Contacto -->
+<section 
+  id="contacto" 
+  class="container-custom py-16 text-center fade-in" 
+  data-aos="fade-up">
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Contacto</h2>
+  <p class="mb-6 text-gray-700 dark:text-gray-300">
+    ¿Listo para tu próximo proyecto? Escríbeme y hablemos.
+  </p>
+  <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
+</section>
+
+    </main>
+    <footer class="py-6 text-center bg-gray-100">
+  <p class="text-sm text-gray-600">
+    &copy; 2025 Lautaro Salas Ane. Todos los derechos reservados.
+  </p>
+</footer>
+
+
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init({ duration: 800, once: true });
+    </script>
+  </body>
+</html>
