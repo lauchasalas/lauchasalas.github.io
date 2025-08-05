@@ -4,14 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Inicio</title>
+  <meta name="description" content="Portfolio — Lautaro Salas Ane">
+  <meta property="og:title" content="Inicio | Lautaro Salas Ane">
+  <meta property="og:description" content="Portfolio — Lautaro Salas Ane">
+  <meta property="og:image" content="https://lauchasalas.github.io/photos/hero.jpg">
+
   <link rel="stylesheet" href="/css/styles.css">
   <!-- Lightbox CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
   <!-- AOS CSS -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* Lightbox tweaks estilo Apple */
+    .lightboxOverlay { background: rgba(0,0,0,0.9) !important; }
+    .lb-data .lb-number, .lb-data .lb-caption {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      opacity: 0.8;
+    }
+  </style>
 </head>
 
-  <body class="bg-white text-gray-900">
+  <body>
     <header>
   <nav class="container-custom flex justify-between items-center py-4">
     <a href="/" class="text-xl font-bold hover:opacity-80 transition">Lautaro Salas Ane</a>
@@ -44,11 +57,9 @@
   class="container-custom py-24 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre mí</h2>
+  <h2>Sobre mí</h2>
   <p class="max-w-3xl mx-auto leading-relaxed">
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital.
-    Mi pasión es capturar momentos auténticos y convertirlos
-    en historias visuales inolvidables.
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital. Mi pasión es capturar momentos auténticos y convertirlos en historias visuales inolvidables.
   </p>
 </section>
 
@@ -97,29 +108,53 @@
   <h2 class="container-custom text-3xl font-bold mb-6">Galería Completa</h2>
   <div class="thumb-grid">
     
-      <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+      <a href="/photos/hero.jpg" data-lightbox="gallery" data-title="hero">
+        <img src="/photos/hero.jpg" alt="hero" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+      <a href="/photos/photo1.jpg" data-lightbox="gallery" data-title="photo1">
+        <img src="/photos/photo1.jpg" alt="photo1" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+      <a href="/photos/photo10.jpg" data-lightbox="gallery" data-title="photo10">
+        <img src="/photos/photo10.jpg" alt="photo10" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+      <a href="/photos/photo11.jpg" data-lightbox="gallery" data-title="photo11">
+        <img src="/photos/photo11.jpg" alt="photo11" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+      <a href="/photos/photo2.jpg" data-lightbox="gallery" data-title="photo2">
+        <img src="/photos/photo2.jpg" alt="photo2" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+      <a href="/photos/photo3.jpg" data-lightbox="gallery" data-title="photo3">
+        <img src="/photos/photo3.jpg" alt="photo3" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+      <a href="/photos/photo4.jpg" data-lightbox="gallery" data-title="photo4">
+        <img src="/photos/photo4.jpg" alt="photo4" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+      <a href="/photos/photo5.jpg" data-lightbox="gallery" data-title="photo5">
+        <img src="/photos/photo5.jpg" alt="photo5" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+      <a href="/photos/photo6.jpg" data-lightbox="gallery" data-title="photo6">
+        <img src="/photos/photo6.jpg" alt="photo6" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+      <a href="/photos/photo7.jpg" data-lightbox="gallery" data-title="photo7">
+        <img src="/photos/photo7.jpg" alt="photo7" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+      <a href="/photos/photo8.jpg" data-lightbox="gallery" data-title="photo8">
+        <img src="/photos/photo8.jpg" alt="photo8" loading="lazy" />
+      </a>
     
-      <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+      <a href="/photos/photo9.jpg" data-lightbox="gallery" data-title="photo9">
+        <img src="/photos/photo9.jpg" alt="photo9" loading="lazy" />
+      </a>
     
   </div>
 </section>
@@ -149,14 +184,25 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
       AOS.init({ duration: 800, once: true });
-      // Back-to-top button
-      const btn = document.getElementById("toTop");
-      window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) btn.classList.add("show");
-        else btn.classList.remove("show");
+
+      // Carrusel
+      const carousel = document.querySelector('.mini-carousel');
+      const prevBtn = document.getElementById('carousel-prev');
+      const nextBtn = document.getElementById('carousel-next');
+      if (carousel && prevBtn && nextBtn) {
+        prevBtn.onclick = () => carousel.scrollBy({ left: -carousel.offsetWidth*0.8, behavior:'smooth' });
+        nextBtn.onclick = () => carousel.scrollBy({ left: carousel.offsetWidth*0.8, behavior:'smooth' });
+      }
+
+      // Back-to-Top
+      const toTop = document.getElementById('toTop');
+      window.addEventListener('scroll', () => {
+        toTop.classList.toggle('show', window.scrollY > window.innerHeight);
       });
-      btn.onclick = () => window.scrollTo({ top: 0, behavior: "smooth" });
+      toTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     </script>
-    <button id="toTop">↑</button>
+    <button id="toTop" aria-label="Back to top">⬆︎</button>
   </body>
 </html>
