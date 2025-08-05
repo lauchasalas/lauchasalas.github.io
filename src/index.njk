@@ -4,80 +4,67 @@ title: "Inicio"
 description: "Portfolio — Lautaro Salas Ane"
 ---
 
-<!-- Hero al estilo Apple -->
-<section 
-  class="hero-section" 
-  style="background-image: url('/photos/hero.jpg')">
-  <div class="hero-overlay fade-in" data-aos="zoom-in">
+<!-- Hero Section -->
+<section
+  class="hero-section fade-in"
+  style="background-image: url('/photos/hero.jpg')"
+>
+  <div class="hero-overlay">
     <h1 class="hero-title">Capturando Momentos</h1>
     <p class="hero-subtitle">Fotografía profesional & Marketing visual</p>
-    <a href="#mini-gallery" class="btn-primary">Ver Portfolio</a>
+    <a href="#portfolio" class="btn-primary">Ver Portfolio</a>
   </div>
 </section>
 
 <!-- Sobre mí -->
-<section 
-  id="sobre-mi" 
-  class="container-custom py-16 text-center fade-in" 
-  data-aos="fade-up">
-  <h2 class="text-3xl md:text-4xl font-bold mb-6">Sobre mí</h2>
-  <p class="max-w-2xl mx-auto text-gray-700 dark:text-gray-300">
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital. Mi pasión es capturar
-    momentos auténticos y convertirlos en historias visuales inolvidables.
+<section
+  id="sobre-mi"
+  class="container-custom py-24 text-center fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre mí</h2>
+  <p class="max-w-3xl mx-auto leading-relaxed">
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital.
+    Mi pasión es capturar momentos auténticos y convertirlos
+    en historias visuales inolvidables.
   </p>
 </section>
 
-<!-- Mini-Carrusel de Thumbnails -->
-<section 
-  id="mini-gallery" 
-  class="container-custom py-16" 
-  data-aos="fade-right">
-  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center fade-in">Explora mis Fotos</h2>
-  <div class="mini-carousel fade-in">
+<!-- Mini-Carrusel Horizontal -->
+<section
+  id="portfolio"
+  class="fade-in"
+  data-aos="fade-right"
+>
+  <h2 class="container-custom text-3xl font-bold mb-6">Explora mis Fotos</h2>
+  <div class="mini-carousel">
     {% for photo in collections.photo %}
-      <a href="{{ photo.url }}" data-lightbox="gallery" class="snap-center">
-        <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
-      </a>
+      <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
     {% endfor %}
   </div>
 </section>
 
-<!-- Mini-Cuadrícula al estilo Pixpa -->
-<section 
-  id="thumb-grid" 
-  class="container-custom py-16 fade-in" 
-  data-aos="fade-up">
-  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Mis Proyectos</h2>
+<!-- Grid de Miniaturas -->
+<section
+  id="galeria"
+  class="fade-in"
+  data-aos="fade-up"
+>
+  <h2 class="container-custom text-3xl font-bold mb-6">Galería Completa</h2>
   <div class="thumb-grid">
     {% for photo in collections.photo %}
-      <a href="{{ photo.url }}" data-lightbox="gallery">
-        <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
-      </a>
-    {% endfor %}
-  </div>
-</section>
-
-<!-- Galería en Cuadrícula Grande -->
-<section 
-  id="galeria" 
-  class="container-custom py-16 fade-in" 
-  data-aos="fade-up">
-  <h2 class="text-3xl md:text-4xl font-bold mb-8 text-center">Galería Completa</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-    {% for photo in collections.photo %}
-      <img src="{{ photo.url }}" alt="{{ photo.data.title }}" class="rounded-lg shadow-lg" />
+      <img src="{{ photo.url }}" alt="{{ photo.data.title }}" loading="lazy" />
     {% endfor %}
   </div>
 </section>
 
 <!-- Contacto -->
-<section 
-  id="contacto" 
-  class="container-custom py-16 text-center fade-in" 
-  data-aos="fade-up">
+<section
+  id="contacto"
+  class="container-custom py-24 text-center fade-in"
+  data-aos="fade-up"
+>
   <h2 class="text-3xl md:text-4xl font-bold mb-4">Contacto</h2>
-  <p class="mb-6 text-gray-700 dark:text-gray-300">
-    ¿Listo para tu próximo proyecto? Escríbeme y hablemos.
-  </p>
+  <p class="mb-6">¿Tienes un proyecto en mente? Escríbeme:</p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
 </section>

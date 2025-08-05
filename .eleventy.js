@@ -2,15 +2,13 @@ const fs = require("fs");
 const path = require("path");
 
 module.exports = function(eleventyConfig) {
-  // Copia las fotos
+  // --- Pase de fotos y CSS --------------------------------
   eleventyConfig.addPassthroughCopy("src/photos");
-
-  // Copia el CSS compilado
   eleventyConfig.addPassthroughCopy({
     "src/css/styles.css": "css/styles.css"
   });
 
-  // Crea la colección `photo` leyendo src/photos
+  // --- Colección de fotos ---------------------------------
   eleventyConfig.addCollection("photo", function() {
     const dir = "./src/photos";
     return fs
@@ -22,7 +20,13 @@ module.exports = function(eleventyConfig) {
       }));
   });
 
+  // === Aquí añadimos la variable global "year" ==========
+  eleventyConfig.addGlobalData("year", new Date().getFullYear());
+
   return {
-    dir: { input: "src", output: "docs" }
+    dir: {
+      input: "src",
+      output: "docs"
+    }
   };
 };
