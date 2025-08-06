@@ -13,115 +13,109 @@
 
     <!-- AOS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
+
+    <!-- Parallax Hero -->
     <script>
-      AOS.init({ duration: 800, once: true });
+      const heroBg = document.getElementById("parallax");
+      window.addEventListener("scroll", () => {
+        if (heroBg) {
+          heroBg.style.backgroundPositionY = `${window.pageYOffset * 0.5}px`;
+        }
+      });
     </script>
 
-    <!-- Interacciones -->
+    <!-- Scripts de carrusel, navbar activa, back-to-top (igual que antes) -->
     <script>
-    // Parallax Hero
-    const hero = document.getElementById("hero");
-    window.addEventListener("scroll", () => {
-      if (hero) hero.style.backgroundPositionY = `${window.pageYOffset * 0.3}px`;
-    });
-
-    // Mini-Carrusel con flechas, auto y drag
-    (function(){
-      const mini    = document.getElementById("mini-carousel");
-      const prevBtn = document.getElementById("carousel-prev");
-      const nextBtn = document.getElementById("carousel-next");
-      const dots    = document.getElementById("dots");
-      if (!mini || !prevBtn || !nextBtn || !dots) return;
-
-      const count = mini.children.length;
-      let current = 0, isDown = false, startX, scrollLeft;
-
-      // Crear dots
-      for (let i = 0; i < count; i++){
-        const d = document.createElement("span");
-        d.className = "dot";
-        dots.append(d);
-      }
-      const allDots = dots.children;
-      function updateDots(){
-        Array.from(allDots).forEach((d,i) =>
-          d.classList.toggle("active", i === current)
-        );
-      }
-
-      // Flechas
-      prevBtn.addEventListener("click", () => {
-        current = (current - 1 + count) % count;
-        mini.scrollBy({ left: -mini.offsetWidth * 0.4, behavior: "smooth" });
-        updateDots();
-      });
-      nextBtn.addEventListener("click", () => {
-        current = (current + 1) % count;
-        mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
-        updateDots();
-      });
-
-      // Auto-scroll
-      setInterval(() => nextBtn.click(), 4000);
-
-      // Drag mouse
-      mini.addEventListener("mousedown", e => {
-        isDown = true;
-        startX = e.pageX - mini.offsetLeft;
-        scrollLeft = mini.scrollLeft;
-      });
-      mini.addEventListener("mouseup", () => isDown = false);
-      mini.addEventListener("mouseleave", () => isDown = false);
-      mini.addEventListener("mousemove", e => {
-        if (!isDown) return;
-        const x = e.pageX - mini.offsetLeft;
-        mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
-      });
-
-      // Drag touch
-      mini.addEventListener("touchstart", e => {
-        isDown = true;
-        startX = e.touches[0].pageX - mini.offsetLeft;
-        scrollLeft = mini.scrollLeft;
-      });
-      mini.addEventListener("touchend", () => isDown = false);
-      mini.addEventListener("touchmove", e => {
-        if (!isDown) return;
-        const x = e.touches[0].pageX - mini.offsetLeft;
-        mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
-      });
-
-      updateDots();
-    })();
-
-    // Navbar sección activa
-    (function(){
-      const secs = document.querySelectorAll("section[id]");
-      const links = document.querySelectorAll("nav a");
-      window.addEventListener("scroll", () => {
-        const y = window.pageYOffset;
-        secs.forEach(sec => {
-          const top = sec.offsetTop - 100, h = sec.offsetHeight;
-          const link = document.querySelector(`nav a[href="#${sec.id}"]`);
-          if (y >= top && y < top + h) {
-            links.forEach(a => a.classList.remove("text-black","font-extrabold"));
-            link && link.classList.add("text-black","font-extrabold");
-          }
+      // mini-carrusel, dots, drag...
+      (function(){
+        const mini    = document.getElementById("mini-carousel");
+        const prevBtn = document.getElementById("carousel-prev");
+        const nextBtn = document.getElementById("carousel-next");
+        const dots    = document.getElementById("dots");
+        if (!mini || !prevBtn || !nextBtn || !dots) return;
+        const count = mini.children.length;
+        let current = 0, isDown = false, startX, scrollLeft;
+        // generar dots
+        for (let i = 0; i < count; i++){
+          const d = document.createElement("span");
+          d.className = "w-2 h-2 bg-gray-300 rounded-full";
+          dots.append(d);
+        }
+        const allDots = dots.children;
+        function updateDots(){
+          Array.from(allDots).forEach((d,i) =>
+            d.classList.toggle("bg-gray-800", i === current)
+          );
+        }
+        prevBtn.addEventListener("click", () => {
+          current = (current - 1 + count) % count;
+          mini.scrollBy({ left: -mini.offsetWidth * 0.4, behavior: "smooth" });
+          updateDots();
         });
-      });
-    })();
+        nextBtn.addEventListener("click", () => {
+          current = (current + 1) % count;
+          mini.scrollBy({ left: mini.offsetWidth * 0.4, behavior: "smooth" });
+          updateDots();
+        });
+        setInterval(() => nextBtn.click(), 4000);
+        // drag mouse
+        mini.addEventListener("mousedown", e => {
+          isDown = true;
+          startX = e.pageX - mini.offsetLeft;
+          scrollLeft = mini.scrollLeft;
+        });
+        mini.addEventListener("mouseup", () => isDown = false);
+        mini.addEventListener("mouseleave", () => isDown = false);
+        mini.addEventListener("mousemove", e => {
+          if (!isDown) return;
+          e.preventDefault();
+          const x = e.pageX - mini.offsetLeft;
+          mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
+        });
+        // touch
+        mini.addEventListener("touchstart", e => {
+          isDown = true;
+          startX = e.touches[0].pageX - mini.offsetLeft;
+          scrollLeft = mini.scrollLeft;
+        });
+        mini.addEventListener("touchend", () => isDown = false);
+        mini.addEventListener("touchmove", e => {
+          if (!isDown) return;
+          const x = e.touches[0].pageX - mini.offsetLeft;
+          mini.scrollLeft = scrollLeft - (x - startX) * 1.5;
+        });
+        updateDots();
+      })();
 
-    // Back-to-Top
-    (function(){
-      const toTop = document.getElementById("toTop");
-      if (!toTop) return;
-      window.addEventListener("scroll", () => {
-        toTop.classList.toggle("show", window.pageYOffset > 400);
-      });
-      toTop.addEventListener("click", () => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      });
-    })();
+      // Navbar activa
+      (function(){
+        const secs = document.querySelectorAll("section[id]");
+        const links = document.querySelectorAll("nav a");
+        window.addEventListener("scroll", () => {
+          const y = window.pageYOffset;
+          secs.forEach(sec => {
+            const top = sec.offsetTop - 100, h = sec.offsetHeight;
+            const link = document.querySelector(`nav a[href="#${sec.id}"]`);
+            if (y >= top && y < top + h) {
+              links.forEach(a => a.classList.remove("text-black","font-extrabold"));
+              link && link.classList.add("text-black","font-extrabold");
+            }
+          });
+        });
+      })();
+
+      // Back to top
+      (function(){
+        const toTop = document.getElementById("toTop");
+        if (!toTop) return;
+        window.addEventListener("scroll", () => {
+          toTop.classList.toggle("show", window.pageYOffset > 400);
+        });
+        toTop.addEventListener("click", () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+      })();
     </script>
   </body>
 </html>

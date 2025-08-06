@@ -11,9 +11,9 @@ description: "Portfolio — Lautaro Salas Ane"
     class="absolute inset-0 bg-cover bg-center"
     style="background-image:url('/photos/hero.jpg')"
   ></div>
-  <div class="hero-overlay fade-in relative z-10 text-center px-6 py-10 max-w-md mx-auto">
-    <h1 class="text-4xl md:text-6xl font-extrabold mb-4">Quiet Steps</h1>
-    <p class="text-lg md:text-2xl text-gray-700 mb-6">
+  <div class="hero-overlay flex flex-col items-center justify-center text-center">
+    <h1 class="text-4xl md:text-6xl font-extrabold text-white mb-4">Quiet Steps</h1>
+    <p class="text-lg md:text-2xl text-white/80 mb-6">
       Transformemos tu visión en imágenes que cuenten tu historia.
     </p>
     <a href="#portfolio" class="btn-primary">View Prints</a>
@@ -26,10 +26,11 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-16 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Sobre mí</h2>
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Sobre mí</h2>
   <p class="text-base md:text-lg text-gray-700 max-w-2xl mx-auto leading-relaxed">
-    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital, apasionado
-    por convertir momentos auténticos en historias visuales inolvidables.
+    Soy Lautaro Salas Ane, fotógrafo y especialista en marketing digital,
+    apasionado por convertir momentos auténticos en historias visuales
+    inolvidables.
   </p>
 </section>
 
@@ -39,13 +40,9 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-16 relative fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Explora mis Fotos</h2>
+  <h2 class="section-title-center mb-8">Explora mis Fotos</h2>
 
-  <button
-    id="carousel-prev"
-    aria-label="Anterior"
-    class="absolute left-2 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg z-10"
-  >‹</button>
+  <button id="carousel-prev" aria-label="Anterior" class="carousel-btn left-0 -translate-y-1/2">‹</button>
 
   <div id="mini-carousel" class="mini-carousel">
     {% for photo in collections.photo %}
@@ -53,18 +50,14 @@ description: "Portfolio — Lautaro Salas Ane"
         src="{{ photo.url }}"
         alt="{{ photo.data.title }}"
         loading="lazy"
-        class="w-28 h-28 sm:w-32 sm:h-32 rounded-lg shadow-lg object-cover snap-start"
+        class="carousel-img"
       />
     {% endfor %}
   </div>
 
-  <button
-    id="carousel-next"
-    aria-label="Siguiente"
-    class="absolute right-2 top-1/2 transform -translate-y-1/2 bg-white/70 p-2 rounded-full shadow-lg z-10"
-  >›</button>
+  <button id="carousel-next" aria-label="Siguiente" class="carousel-btn right-0 -translate-y-1/2">›</button>
 
-  <div id="dots" class="flex justify-center space-x-2 mt-4"></div>
+  <div id="dots" class="flex justify-center space-x-2 mt-6"></div>
 </section>
 
 <!-- GALERÍA COMPLETA -->
@@ -73,29 +66,33 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Galería Completa</h2>
-  <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
+  <h2 class="section-title-center mb-8">Galería Completa</h2>
+  <div class="gallery-grid">
     {% for photo in collections.photo %}
-      <a href="{{ photo.url }}" data-lightbox="gallery">
+      <a
+        href="{{ photo.url }}"
+        class="gallery-item"
+        data-lightbox="gallery"
+        title="{{ photo.data.title }}"
+      >
         <img
           src="{{ photo.url }}"
           alt="{{ photo.data.title }}"
           loading="lazy"
-          class="w-full h-48 object-cover rounded-lg shadow-sm hover:scale-105 transition"
         />
       </a>
     {% endfor %}
   </div>
 </section>
 
-<!-- CTA: Contenido y Llamadas a la Acción -->
+<!-- CTA: Contáctame -->
 <section
   id="cta"
-  class="container-custom py-16 text-center bg-gray-50 fade-in"
+  class="container-custom py-16 bg-gray-50 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">¿Listo para tu próximo proyecto?</h2>
-  <p class="mb-6 text-gray-700">
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">¿Listo para tu próximo proyecto?</h2>
+  <p class="mb-6 text-gray-700 max-w-xl mx-auto">
     Transformemos tu visión en imágenes que cuenten tu historia.
   </p>
   <a href="#contacto" class="btn-primary">Contáctame Ahora</a>
@@ -107,21 +104,23 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Futuras Funcionalidades</h2>
+  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+    Futuras Funcionalidades
+  </h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+    <div class="feature-card">
       <h3 class="font-semibold mb-2">Galería Filtrable</h3>
       <p class="text-gray-600">Selecciona por categorías al instante.</p>
     </div>
-    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+    <div class="feature-card">
       <h3 class="font-semibold mb-2">Descargas HD</h3>
       <p class="text-gray-600">Paquetes descargables de alta resolución.</p>
     </div>
-    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+    <div class="feature-card">
       <h3 class="font-semibold mb-2">Tienda Online</h3>
       <p class="text-gray-600">Compra impresiones directas desde la web.</p>
     </div>
-    <div class="p-6 bg-white rounded-lg shadow hover:shadow-lg transition">
+    <div class="feature-card">
       <h3 class="font-semibold mb-2">Testimonios Slider</h3>
       <p class="text-gray-600">Opiniones de clientes en carrusel.</p>
     </div>
@@ -134,7 +133,9 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Diseño y Accesibilidad</h2>
+  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+    Diseño y Accesibilidad
+  </h2>
   <ul class="list-disc list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
     <li>Contraste óptimo y modo oscuro opcional.</li>
     <li>Etiquetas <code>alt</code> descriptivas en todas las imágenes.</li>
@@ -149,7 +150,9 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-16 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Experiencia de Usuario (UX)</h2>
+  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+    Experiencia de Usuario (UX)
+  </h2>
   <ul class="list-decimal list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
     <li>Animaciones suaves guían la atención.</li>
     <li>Carruseles táctiles y con flechas.</li>
@@ -161,10 +164,12 @@ description: "Portfolio — Lautaro Salas Ane"
 <!-- RENDIMIENTO Y CARGA -->
 <section
   id="rendimiento"
-  class="container-custom py-16 fade-in bg-gray-50"
+  class="container-custom py-16 bg-gray-50 fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Rendimiento y Carga</h2>
+  <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">
+    Rendimiento y Carga
+  </h2>
   <ul class="list-disc list-inside max-w-2xl mx-auto space-y-3 text-gray-700">
     <li><code>loading="lazy"</code> en todas las imágenes.</li>
     <li>WebP/AVIF generados automáticamente.</li>
@@ -179,8 +184,8 @@ description: "Portfolio — Lautaro Salas Ane"
   class="container-custom py-16 text-center fade-in"
   data-aos="fade-up"
 >
-  <h2 class="section-title-center">Contacto</h2>
-  <p class="mb-6">¿Tienes un proyecto en mente? Escríbeme:</p>
+  <h2 class="text-3xl md:text-4xl font-bold mb-4">Contacto</h2>
+  <p class="mb-6 max-w-md mx-auto">¿Tienes un proyecto en mente? Escríbeme:</p>
   <a href="mailto:tuemail@ejemplo.com" class="btn-primary">Enviar mensaje</a>
 </section>
 
